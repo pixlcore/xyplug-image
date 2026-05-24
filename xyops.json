@@ -15,7 +15,7 @@
 				"script": "",
 				"kill": "all",
 				"notes": "Convert image formats, resize, crop, and add effects using the canvas-plus library.",
-				"icon": "panorama-variant-outline",
+				"icon": "image-edit-outline",
 				"runner": true,
 				"params": [
 					{
@@ -76,14 +76,15 @@
 					{
 						"id": "group_resize",
 						"title": "Resize",
-						"type": "group"
+						"type": "group",
+						"caption": "Optionally resize each input image before any other operations are applied.  [Learn More](https://github.com/jhuckaby/canvas-plus#resize)"
 					},
 					{
 						"id": "resize_enabled",
 						"title": "Resize Image",
 						"type": "checkbox",
 						"value": false,
-						"caption": "Resize each input image before any other operations are applied."
+						"caption": "Enable the resize filter."
 					},
 					{
 						"id": "resize_width",
@@ -121,7 +122,7 @@
 						"title": "Padding Background",
 						"type": "text",
 						"variant": "color",
-						"value": "#ffffff",
+						"value": "#888888",
 						"caption": "Background color used by FitPad mode."
 					},
 					{
@@ -164,14 +165,15 @@
 					{
 						"id": "group_crop",
 						"title": "Crop",
-						"type": "group"
+						"type": "group",
+						"caption": "Optionally crop each input image down to a specific rectangular area.  [Learn More](https://github.com/jhuckaby/canvas-plus#crop)"
 					},
 					{
 						"id": "crop_enabled",
 						"title": "Crop Image",
 						"type": "checkbox",
 						"value": false,
-						"caption": "Crop each image after the initial resize step."
+						"caption": "Enable the crop filter."
 					},
 					{
 						"id": "crop_x",
@@ -208,14 +210,15 @@
 					{
 						"id": "group_transform",
 						"title": "Transform",
-						"type": "group"
+						"type": "group",
+						"caption": "Optionally rotate, flip, or apply a custom transform matrix to each input image.  [Learn More](https://github.com/jhuckaby/canvas-plus#transform)"
 					},
 					{
 						"id": "transform_enabled",
 						"title": "Transform Image",
 						"type": "checkbox",
 						"value": false,
-						"caption": "Rotate or flip each image after resize and crop."
+						"caption": "Enable the transform filter."
 					},
 					{
 						"id": "transform_mode",
@@ -264,14 +267,15 @@
 					{
 						"id": "group_adjustments",
 						"title": "Adjustments",
-						"type": "group"
+						"type": "group",
+						"caption": "Optionally adjust image brightness, contrast, hue, saturation, lighting, gamma, and normalization.  [Learn More](https://github.com/jhuckaby/canvas-plus#adjust)"
 					},
 					{
 						"id": "adjust_enabled",
 						"title": "Apply Adjustments",
 						"type": "checkbox",
 						"value": false,
-						"caption": "Apply brightness, contrast, color, lighting, gamma, and normalize settings before the optional filter."
+						"caption": "Enable the adjustment filters."
 					},
 					{
 						"id": "adjust_brightness",
@@ -326,7 +330,7 @@
 						"title": "Gamma",
 						"type": "text",
 						"variant": "number",
-						"value": 1.0,
+						"value": 1,
 						"caption": "Gamma amount, typically between `0.25` and `4`."
 					},
 					{
@@ -360,7 +364,7 @@
 								{
 									"id": "blur",
 									"title": "Blur",
-									"description": "Apply a fast box blur.",
+									"description": "Apply a fast box blur.  [Learn More](https://github.com/jhuckaby/canvas-plus#blur)",
 									"fields": [
 										{
 											"id": "blur_amount",
@@ -389,7 +393,7 @@
 								{
 									"id": "gaussian_blur",
 									"title": "Gaussian Blur",
-									"description": "Apply a higher quality Gaussian blur.",
+									"description": "Apply a higher quality Gaussian blur.  [Learn More](https://github.com/jhuckaby/canvas-plus#gaussianblur)",
 									"fields": [
 										{
 											"id": "gaussian_blur_amount",
@@ -426,7 +430,7 @@
 								{
 									"id": "border",
 									"title": "Border",
-									"description": "Draw a border around or inside the image.",
+									"description": "Draw a border around or inside the image.  [Learn More](https://github.com/jhuckaby/canvas-plus#border)",
 									"fields": [
 										{
 											"id": "border_size",
@@ -441,7 +445,7 @@
 											"title": "Color",
 											"type": "text",
 											"variant": "color",
-											"value": "#000000",
+											"value": "#888888",
 											"caption": "Border color."
 										},
 										{
@@ -456,7 +460,7 @@
 								{
 									"id": "composite",
 									"title": "Composite",
-									"description": "Composite another image on top of the input image.",
+									"description": "Composite another image on top of the input image.  [Learn More](https://github.com/jhuckaby/canvas-plus#composite)",
 									"fields": [
 										{
 											"id": "composite_image",
@@ -547,7 +551,7 @@
 								{
 									"id": "convolve",
 									"title": "Convolve",
-									"description": "Apply a custom convolution kernel.",
+									"description": "Apply a custom convolution kernel.  [Learn More](https://github.com/jhuckaby/canvas-plus#convolve)",
 									"fields": [
 										{
 											"id": "convolve_matrix",
@@ -583,7 +587,7 @@
 								{
 									"id": "curves",
 									"title": "Curves",
-									"description": "Apply a custom channel curve.",
+									"description": "Apply a custom tonality curve.  [Learn More](https://github.com/jhuckaby/canvas-plus#curves)",
 									"fields": [
 										{
 											"id": "curves_points",
@@ -604,7 +608,7 @@
 								{
 									"id": "emboss",
 									"title": "Emboss",
-									"description": "Apply an emboss effect.",
+									"description": "Apply an emboss effect.  [Learn More](https://github.com/jhuckaby/canvas-plus#emboss)",
 									"fields": [
 										{
 											"id": "emboss_channels",
@@ -618,7 +622,7 @@
 								{
 									"id": "expand",
 									"title": "Expand",
-									"description": "Expand the canvas around the image.",
+									"description": "Expand the canvas around the image.  [Learn More](https://github.com/jhuckaby/canvas-plus#expand)",
 									"fields": [
 										{
 											"id": "expand_width",
@@ -656,7 +660,7 @@
 								{
 									"id": "find_edges",
 									"title": "Find Edges",
-									"description": "Apply an edge detection filter.",
+									"description": "Apply an edge detection filter.  [Learn More](https://github.com/jhuckaby/canvas-plus#findedges)",
 									"fields": [
 										{
 											"id": "find_edges_channels",
@@ -670,14 +674,14 @@
 								{
 									"id": "flatten",
 									"title": "Flatten",
-									"description": "Flatten transparency against a background color.",
+									"description": "Flatten transparency against a background color.  [Learn More](https://github.com/jhuckaby/canvas-plus#flatten)",
 									"fields": [
 										{
 											"id": "flatten_background",
 											"title": "Background Color",
 											"type": "text",
 											"variant": "color",
-											"value": "#ffffff",
+											"value": "#888888",
 											"caption": "Background color to flatten against."
 										}
 									]
@@ -685,7 +689,7 @@
 								{
 									"id": "opacity",
 									"title": "Opacity",
-									"description": "Adjust the image opacity.",
+									"description": "Adjust the image opacity.  [Learn More](https://github.com/jhuckaby/canvas-plus#opacity)",
 									"fields": [
 										{
 											"id": "opacity_amount",
@@ -700,7 +704,7 @@
 											"title": "Background Color",
 											"type": "text",
 											"variant": "color",
-											"value": "#ffffff",
+											"value": "#888888",
 											"caption": "Optional background color."
 										}
 									]
@@ -708,7 +712,7 @@
 								{
 									"id": "posterize",
 									"title": "Posterize",
-									"description": "Reduce channel tones to discrete levels.",
+									"description": "Reduce channel tones to discrete levels.  [Learn More](https://github.com/jhuckaby/canvas-plus#posterize)",
 									"fields": [
 										{
 											"id": "posterize_levels",
@@ -730,7 +734,7 @@
 								{
 									"id": "sharpen",
 									"title": "Sharpen",
-									"description": "Apply a sharpening convolution filter.",
+									"description": "Apply a sharpening convolution filter.  [Learn More](https://github.com/jhuckaby/canvas-plus#sharpen)",
 									"fields": [
 										{
 											"id": "sharpen_edges",
@@ -751,7 +755,7 @@
 								{
 									"id": "solarize",
 									"title": "Solarize",
-									"description": "Apply a solarize curve effect.",
+									"description": "Apply a solarize curve effect.  [Learn More](https://github.com/jhuckaby/canvas-plus#solarize)",
 									"fields": [
 										{
 											"id": "solarize_channels",
@@ -765,7 +769,7 @@
 								{
 									"id": "temperature",
 									"title": "Temperature",
-									"description": "Warm or cool the image colors.",
+									"description": "Warm or cool the image colors.  [Learn More](https://github.com/jhuckaby/canvas-plus#temperature)",
 									"fields": [
 										{
 											"id": "temperature_amount",
@@ -780,7 +784,7 @@
 								{
 									"id": "threshold",
 									"title": "Threshold",
-									"description": "Force channel values above or below a cutoff.",
+									"description": "Force channel values above or below a cutoff.  [Learn More](https://github.com/jhuckaby/canvas-plus#threshold)",
 									"fields": [
 										{
 											"id": "threshold_level",
@@ -802,7 +806,7 @@
 								{
 									"id": "trim",
 									"title": "Trim",
-									"description": "Automatically trim matching edge pixels.",
+									"description": "Automatically trim matching edge pixels.  [Learn More](https://github.com/jhuckaby/canvas-plus#trim)",
 									"fields": [
 										{
 											"id": "trim_color",
@@ -828,14 +832,15 @@
 					{
 						"id": "group_quantize",
 						"title": "Quantize",
-						"type": "group"
+						"type": "group",
+						"caption": "Optionally reduce each image to an indexed color palette before writing PNG or GIF output.  [Learn More](https://github.com/jhuckaby/canvas-plus#quantize)"
 					},
 					{
 						"id": "quantize_enabled",
 						"title": "Apply Quantization",
 						"type": "checkbox",
 						"value": false,
-						"caption": "Reduce the image to an indexed color palette before writing the output PNG or GIF."
+						"caption": "Enable image quantization."
 					},
 					{
 						"id": "quantize_mode",
@@ -885,7 +890,8 @@
 					{
 						"id": "group_output",
 						"title": "Output",
-						"type": "group"
+						"type": "group",
+						"caption": "Choose the output image format, compression quality, and filename suffix for generated files.  [Learn More](https://github.com/jhuckaby/canvas-plus#write)"
 					},
 					{
 						"id": "output_format",
