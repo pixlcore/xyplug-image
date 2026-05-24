@@ -1,0 +1,29 @@
+{
+  "name": "xyplug-image",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A xyOps marketplace plugin for manipulating images using canvas-plus.",
+  "author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
+  "homepage": "https://github.com/pixlcore/xyplug-image",
+  "license": "MIT",
+  "main": "index.js",
+  "bin": {
+    "xyplug-image": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixlcore/xyplug-image"
+  },
+  "bugs": {
+    "url": "https://github.com/pixlcore/xyplug-image/issues"
+  },
+  "keywords": [
+    "xyops",
+    "image",
+    "convert",
+    "canvas"
+  ],
+  "dependencies": {
+	"pixl-canvas-plus": "^3.0.1"
+  }
+}

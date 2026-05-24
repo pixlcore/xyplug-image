@@ -1,0 +1,916 @@
+{
+	"type": "xypdf",
+	"description": "xyOps Portable Data Object",
+	"version": "1.0",
+	"xyops": "1.0.60",
+	"items": [
+		{
+			"type": "plugin",
+			"data": {
+				"id": "pmimgqr7ps2iu16a6",
+				"title": "Image Toolkit",
+				"enabled": true,
+				"type": "event",
+				"command": "docker run -i --rm --init --name \"xyplug-image-{{id}}\" ghcr.io/pixlcore/xyplug-image:v1.0.0",
+				"script": "",
+				"kill": "all",
+				"notes": "Convert image formats, resize, crop, and add effects using the canvas-plus library.",
+				"icon": "panorama-variant-outline",
+				"runner": true,
+				"params": [
+					{
+						"id": "config",
+						"title": "Canvas Options",
+						"type": "json",
+						"value": {
+							"readEXIF": true,
+							"autoOrient": true,
+							"throw": true,
+							"debug": true,
+							"gravity": "center",
+							"colors": 256,
+							"dither": true,
+							"ditherType": "FloydSteinberg",
+							"quantizer": "RGBQuant",
+							"maxArea": 100000000,
+							"jpeg": {
+								"progressive": false,
+								"chromaSubsampling": true
+							},
+							"png": {
+								"compressionLevel": 6,
+								"pngFilter": "PNG_ALL_FILTERS"
+							},
+							"webp": {
+								"quality": 100,
+								"target_size": 0,
+								"target_PSNR": 0,
+								"method": 4,
+								"sns_strength": 50,
+								"filter_strength": 60,
+								"filter_sharpness": 0,
+								"filter_type": 1,
+								"partitions": 0,
+								"segments": 4,
+								"pass": 1,
+								"show_compressed": 0,
+								"preprocessing": 0,
+								"autofilter": 0,
+								"partition_limit": 0,
+								"alpha_compression": 1,
+								"alpha_filtering": 1,
+								"alpha_quality": 100,
+								"lossless": 0,
+								"exact": 0,
+								"image_hint": 0,
+								"emulate_jpeg_size": 0,
+								"thread_level": 0,
+								"low_memory": 0,
+								"near_lossless": 100,
+								"use_delta_palette": 0,
+								"use_sharp_yuv": 0
+							}
+						},
+						"caption": "Set options for the canvas-plus library.  [Learn More](https://github.com/jhuckaby/canvas-plus#parameters)"
+					},
+					{
+						"id": "group_resize",
+						"title": "Resize",
+						"type": "group"
+					},
+					{
+						"id": "resize_enabled",
+						"title": "Resize Image",
+						"type": "checkbox",
+						"value": false,
+						"caption": "Resize each input image before any other operations are applied."
+					},
+					{
+						"id": "resize_width",
+						"title": "Target Width",
+						"type": "text",
+						"variant": "number",
+						"value": 640,
+						"caption": "Desired output width in pixels. Leave blank to preserve aspect ratio from height."
+					},
+					{
+						"id": "resize_height",
+						"title": "Target Height",
+						"type": "text",
+						"variant": "number",
+						"value": 480,
+						"caption": "Desired output height in pixels. Leave blank to preserve aspect ratio from width."
+					},
+					{
+						"id": "resize_scale",
+						"title": "Scale Multiplier",
+						"type": "text",
+						"variant": "number",
+						"value": null,
+						"caption": "Optional scale multiplier such as `0.5` or `2`. When set, it takes precedence over width and height."
+					},
+					{
+						"id": "resize_mode",
+						"title": "Resize Mode",
+						"type": "select",
+						"value": "Fit - Contain Aspect Ratio [fit], FitPad - Contain with Padding [fitpad], FitOver - Cover and Crop [fitover], Scale - Exact Dimensions [scale]",
+						"caption": "Choose how the source image should fit into the target dimensions."
+					},
+					{
+						"id": "resize_background",
+						"title": "Padding Background",
+						"type": "text",
+						"variant": "color",
+						"value": "#ffffff",
+						"caption": "Background color used by FitPad mode."
+					},
+					{
+						"id": "resize_direction",
+						"title": "Resize Direction",
+						"type": "select",
+						"value": "Both - Shrink or Enlarge [both], Shrink Only [shrink], Enlarge Only [enlarge]",
+						"caption": "Limit resizing to shrinking, enlarging, or both."
+					},
+					{
+						"id": "resize_gravity",
+						"title": "Alignment",
+						"type": "select",
+						"value": "Center [center], North [north], Northeast [northeast], East [east], Southeast [southeast], South [south], Southwest [southwest], West [west], Northwest [northwest]",
+						"caption": "Alignment used by FitPad and FitOver modes."
+					},
+					{
+						"id": "resize_offset_x",
+						"title": "Offset X",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Horizontal alignment offset in pixels."
+					},
+					{
+						"id": "resize_offset_y",
+						"title": "Offset Y",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Vertical alignment offset in pixels."
+					},
+					{
+						"id": "resize_antialias",
+						"title": "Anti-Aliasing",
+						"type": "select",
+						"value": "Best [best], Good [good], Fast [fast], Nearest [nearest]",
+						"caption": "Scaling quality for resize operations."
+					},
+					{
+						"id": "group_crop",
+						"title": "Crop",
+						"type": "group"
+					},
+					{
+						"id": "crop_enabled",
+						"title": "Crop Image",
+						"type": "checkbox",
+						"value": false,
+						"caption": "Crop each image after the initial resize step."
+					},
+					{
+						"id": "crop_x",
+						"title": "Crop X",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Left coordinate of the crop rectangle."
+					},
+					{
+						"id": "crop_y",
+						"title": "Crop Y",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Top coordinate of the crop rectangle."
+					},
+					{
+						"id": "crop_width",
+						"title": "Crop Width",
+						"type": "text",
+						"variant": "number",
+						"value": 100,
+						"caption": "Width of the crop rectangle in pixels."
+					},
+					{
+						"id": "crop_height",
+						"title": "Crop Height",
+						"type": "text",
+						"variant": "number",
+						"value": 100,
+						"caption": "Height of the crop rectangle in pixels."
+					},
+					{
+						"id": "group_transform",
+						"title": "Transform",
+						"type": "group"
+					},
+					{
+						"id": "transform_enabled",
+						"title": "Transform Image",
+						"type": "checkbox",
+						"value": false,
+						"caption": "Rotate or flip each image after resize and crop."
+					},
+					{
+						"id": "transform_mode",
+						"title": "Transformation",
+						"type": "select",
+						"value": "Rotate [rotate], Flip Horizontal [fliph], Flip Vertical [flipv], 3x3 Matrix [matrix]",
+						"caption": "Choose one transform operation."
+					},
+					{
+						"id": "transform_rotate",
+						"title": "Rotation Angle",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Degrees to rotate when the transform mode is Rotate."
+					},
+					{
+						"id": "transform_matrix",
+						"title": "3x3 Matrix",
+						"type": "text",
+						"value": "",
+						"caption": "Optionally set the first 6 elements of the 3x3 transform matrix, comma-separated."
+					},
+					{
+						"id": "transform_fixed",
+						"title": "Fixed Size",
+						"type": "checkbox",
+						"value": false,
+						"caption": "Keep the original canvas dimensions when rotating instead of expanding to fit."
+					},
+					{
+						"id": "transform_background",
+						"title": "Background Color",
+						"type": "text",
+						"variant": "color",
+						"value": "",
+						"caption": "Background color exposed by rotation.  Leave blank for transparent."
+					},
+					{
+						"id": "transform_antialias",
+						"title": "Anti-Aliasing",
+						"type": "select",
+						"value": "Best [best], Good [good], Fast [fast], Nearest [nearest]",
+						"caption": "Scaling quality for transform operations."
+					},
+					{
+						"id": "group_adjustments",
+						"title": "Adjustments",
+						"type": "group"
+					},
+					{
+						"id": "adjust_enabled",
+						"title": "Apply Adjustments",
+						"type": "checkbox",
+						"value": false,
+						"caption": "Apply brightness, contrast, color, lighting, gamma, and normalize settings before the optional filter."
+					},
+					{
+						"id": "adjust_brightness",
+						"title": "Brightness",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Brightness adjustment from `-255` to `255`."
+					},
+					{
+						"id": "adjust_contrast",
+						"title": "Contrast",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Contrast adjustment from `-255` to `255`."
+					},
+					{
+						"id": "adjust_hue",
+						"title": "Hue",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Hue rotation from `-360` to `360` degrees."
+					},
+					{
+						"id": "adjust_saturation",
+						"title": "Saturation",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Saturation adjustment from `-255` to `255`."
+					},
+					{
+						"id": "adjust_shadows",
+						"title": "Shadow Detail",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Lighting shadow adjustment from `-100` to `100`."
+					},
+					{
+						"id": "adjust_highlights",
+						"title": "Highlight Detail",
+						"type": "text",
+						"variant": "number",
+						"value": 0,
+						"caption": "Lighting highlight adjustment from `-100` to `100`."
+					},
+					{
+						"id": "adjust_gamma",
+						"title": "Gamma",
+						"type": "text",
+						"variant": "number",
+						"value": 1.0,
+						"caption": "Gamma amount, typically between `0.25` and `4`."
+					},
+					{
+						"id": "adjust_normalize",
+						"title": "Normalize",
+						"type": "checkbox",
+						"value": false,
+						"caption": "Auto-enhance the image by stretching channel values."
+					},
+					{
+						"id": "adjust_channels",
+						"title": "Adjustment Channels",
+						"type": "select",
+						"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+						"caption": "Channels used by lighting, gamma and normalize."
+					},
+					{
+						"id": "filter_tool",
+						"title": "Optional Filter",
+						"type": "toolset",
+						"caption": "Choose one additional canvas-plus filter to apply.",
+						"data": {
+							"default": "none",
+							"tools": [
+								{
+									"id": "none",
+									"title": "None",
+									"description": "Skip the optional filter step.",
+									"fields": []
+								},
+								{
+									"id": "blur",
+									"title": "Blur",
+									"description": "Apply a fast box blur.",
+									"fields": [
+										{
+											"id": "blur_amount",
+											"title": "Amount",
+											"type": "text",
+											"variant": "number",
+											"value": 2,
+											"caption": "Blur amount. Higher values are stronger and slower."
+										},
+										{
+											"id": "blur_edges",
+											"title": "Edge Mode",
+											"type": "select",
+											"value": "Repeat [repeat], Wrap [wrap], Mirror [mirror], Discard [discard]",
+											"caption": "How out-of-bounds pixels are handled."
+										},
+										{
+											"id": "blur_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to blur."
+										}
+									]
+								},
+								{
+									"id": "gaussian_blur",
+									"title": "Gaussian Blur",
+									"description": "Apply a higher quality Gaussian blur.",
+									"fields": [
+										{
+											"id": "gaussian_blur_amount",
+											"title": "Amount",
+											"type": "text",
+											"variant": "number",
+											"value": 5,
+											"caption": "Blur radius amount."
+										},
+										{
+											"id": "gaussian_blur_sigma",
+											"title": "Sigma",
+											"type": "text",
+											"variant": "number",
+											"value": 2,
+											"caption": "Gaussian sigma amount."
+										},
+										{
+											"id": "gaussian_blur_edges",
+											"title": "Edge Mode",
+											"type": "select",
+											"value": "Repeat [repeat], Wrap [wrap], Mirror [mirror], Discard [discard]",
+											"caption": "How out-of-bounds pixels are handled."
+										},
+										{
+											"id": "gaussian_blur_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to blur."
+										}
+									]
+								},
+								{
+									"id": "border",
+									"title": "Border",
+									"description": "Draw a border around or inside the image.",
+									"fields": [
+										{
+											"id": "border_size",
+											"title": "Size",
+											"type": "text",
+											"variant": "number",
+											"value": 1,
+											"caption": "Border size in pixels."
+										},
+										{
+											"id": "border_color",
+											"title": "Color",
+											"type": "text",
+											"variant": "color",
+											"value": "#000000",
+											"caption": "Border color."
+										},
+										{
+											"id": "border_mode",
+											"title": "Mode",
+											"type": "select",
+											"value": "Inside [inside], Center [center], Outside [outside]",
+											"caption": "Where the border is drawn relative to the image edge."
+										}
+									]
+								},
+								{
+									"id": "composite",
+									"title": "Composite",
+									"description": "Composite another image on top of the input image.",
+									"fields": [
+										{
+											"id": "composite_image",
+											"title": "Overlay Image",
+											"type": "text",
+											"value": "",
+											"caption": "Local path, or URL for the overlay image."
+										},
+										{
+											"id": "composite_width",
+											"title": "Overlay Width",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Optional overlay resize width. Use `0` to preserve original width."
+										},
+										{
+											"id": "composite_height",
+											"title": "Overlay Height",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Optional overlay resize height. Use `0` to preserve original height."
+										},
+										{
+											"id": "composite_gravity",
+											"title": "Alignment",
+											"type": "select",
+											"value": "Center [center], North [north], Northeast [northeast], East [east], Southeast [southeast], South [south], Southwest [southwest], West [west], Northwest [northwest]",
+											"caption": "Overlay alignment."
+										},
+										{
+											"id": "composite_margin_x",
+											"title": "Margin X",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Horizontal margin in pixels."
+										},
+										{
+											"id": "composite_margin_y",
+											"title": "Margin Y",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Vertical margin in pixels."
+										},
+										{
+											"id": "composite_offset_x",
+											"title": "Offset X",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Horizontal offset in pixels."
+										},
+										{
+											"id": "composite_offset_y",
+											"title": "Offset Y",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Vertical offset in pixels."
+										},
+										{
+											"id": "composite_opacity",
+											"title": "Opacity",
+											"type": "text",
+											"variant": "number",
+											"value": 1,
+											"caption": "Overlay opacity from `0` to `1`."
+										},
+										{
+											"id": "composite_mode",
+											"title": "Composite Mode",
+											"type": "select",
+											"value": "Source Over [source-over], Source In [source-in], Source Out [source-out], Source Atop [source-atop], Destination Over [destination-over], Destination In [destination-in], Destination Out [destination-out], Destination Atop [destination-atop], Lighter [lighter], Copy [copy], XOR [xor], Multiply [multiply], Screen [screen], Overlay [overlay], Darken [darken], Lighten [lighten], Color Dodge [color-dodge], Color Burn [color-burn], Hard Light [hard-light], Soft Light [soft-light], Difference [difference], Exclusion [exclusion], Hue [hue], Saturation [saturation], Color [color], Luminosity [luminosity]",
+											"caption": "Canvas compositing operation."
+										},
+										{
+											"id": "composite_antialias",
+											"title": "Anti-Aliasing",
+											"type": "select",
+											"value": "Best [best], Good [good], Fast [fast], Nearest [nearest]",
+											"caption": "Scaling quality for the overlay image."
+										}
+									]
+								},
+								{
+									"id": "convolve",
+									"title": "Convolve",
+									"description": "Apply a custom convolution kernel.",
+									"fields": [
+										{
+											"id": "convolve_matrix",
+											"title": "Kernel Matrix",
+											"type": "text",
+											"value": "0, -1, 0, -1, 5, -1, 0, -1, 0",
+											"caption": "Comma-separated convolution matrix values."
+										},
+										{
+											"id": "convolve_offset",
+											"title": "Offset",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Destination channel offset."
+										},
+										{
+											"id": "convolve_edges",
+											"title": "Edge Mode",
+											"type": "select",
+											"value": "Repeat [repeat], Wrap [wrap], Mirror [mirror], Discard [discard]",
+											"caption": "How out-of-bounds pixels are handled."
+										},
+										{
+											"id": "convolve_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to convolve."
+										}
+									]
+								},
+								{
+									"id": "curves",
+									"title": "Curves",
+									"description": "Apply a custom channel curve.",
+									"fields": [
+										{
+											"id": "curves_points",
+											"title": "Curve Y Points",
+											"type": "text",
+											"value": "0, 63, 127, 191, 255",
+											"caption": "Comma-separated curve values from `0` to `255`."
+										},
+										{
+											"id": "curves_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to curve."
+										}
+									]
+								},
+								{
+									"id": "emboss",
+									"title": "Emboss",
+									"description": "Apply an emboss effect.",
+									"fields": [
+										{
+											"id": "emboss_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to emboss."
+										}
+									]
+								},
+								{
+									"id": "expand",
+									"title": "Expand",
+									"description": "Expand the canvas around the image.",
+									"fields": [
+										{
+											"id": "expand_width",
+											"title": "Expand Width By",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Horizontal pixels to add."
+										},
+										{
+											"id": "expand_height",
+											"title": "Expand Height By",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Vertical pixels to add."
+										},
+										{
+											"id": "expand_background",
+											"title": "Background Color",
+											"type": "text",
+											"variant": "color",
+											"value": "",
+											"caption": "New canvas background color. Leave blank for transparent."
+										},
+										{
+											"id": "expand_gravity",
+											"title": "Alignment",
+											"type": "select",
+											"value": "Center [center], North [north], Northeast [northeast], East [east], Southeast [southeast], South [south], Southwest [southwest], West [west], Northwest [northwest]",
+											"caption": "Original image alignment inside the expanded canvas."
+										}
+									]
+								},
+								{
+									"id": "find_edges",
+									"title": "Find Edges",
+									"description": "Apply an edge detection filter.",
+									"fields": [
+										{
+											"id": "find_edges_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to process."
+										}
+									]
+								},
+								{
+									"id": "flatten",
+									"title": "Flatten",
+									"description": "Flatten transparency against a background color.",
+									"fields": [
+										{
+											"id": "flatten_background",
+											"title": "Background Color",
+											"type": "text",
+											"variant": "color",
+											"value": "#ffffff",
+											"caption": "Background color to flatten against."
+										}
+									]
+								},
+								{
+									"id": "opacity",
+									"title": "Opacity",
+									"description": "Adjust the image opacity.",
+									"fields": [
+										{
+											"id": "opacity_amount",
+											"title": "Opacity",
+											"type": "text",
+											"variant": "number",
+											"value": 1,
+											"caption": "Final image opacity from `0` to `1`."
+										},
+										{
+											"id": "opacity_background",
+											"title": "Background Color",
+											"type": "text",
+											"variant": "color",
+											"value": "#ffffff",
+											"caption": "Optional background color."
+										}
+									]
+								},
+								{
+									"id": "posterize",
+									"title": "Posterize",
+									"description": "Reduce channel tones to discrete levels.",
+									"fields": [
+										{
+											"id": "posterize_levels",
+											"title": "Levels",
+											"type": "text",
+											"variant": "number",
+											"value": 4,
+											"caption": "Number of posterize levels."
+										},
+										{
+											"id": "posterize_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to posterize."
+										}
+									]
+								},
+								{
+									"id": "sharpen",
+									"title": "Sharpen",
+									"description": "Apply a sharpening convolution filter.",
+									"fields": [
+										{
+											"id": "sharpen_edges",
+											"title": "Edge Mode",
+											"type": "select",
+											"value": "Repeat [repeat], Wrap [wrap], Mirror [mirror], Discard [discard]",
+											"caption": "How out-of-bounds pixels are handled."
+										},
+										{
+											"id": "sharpen_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to sharpen."
+										}
+									]
+								},
+								{
+									"id": "solarize",
+									"title": "Solarize",
+									"description": "Apply a solarize curve effect.",
+									"fields": [
+										{
+											"id": "solarize_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to solarize."
+										}
+									]
+								},
+								{
+									"id": "temperature",
+									"title": "Temperature",
+									"description": "Warm or cool the image colors.",
+									"fields": [
+										{
+											"id": "temperature_amount",
+											"title": "Temperature",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Temperature adjustment from `-255` to `255`."
+										}
+									]
+								},
+								{
+									"id": "threshold",
+									"title": "Threshold",
+									"description": "Force channel values above or below a cutoff.",
+									"fields": [
+										{
+											"id": "threshold_level",
+											"title": "Level",
+											"type": "text",
+											"variant": "number",
+											"value": 128,
+											"caption": "Threshold level from `0` to `255`."
+										},
+										{
+											"id": "threshold_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to threshold."
+										}
+									]
+								},
+								{
+									"id": "trim",
+									"title": "Trim",
+									"description": "Automatically trim matching edge pixels.",
+									"fields": [
+										{
+											"id": "trim_color",
+											"title": "Trim Color",
+											"type": "text",
+											"variant": "color",
+											"value": "",
+											"caption": "Optional color to trim. Leave blank to use the top-left pixel."
+										},
+										{
+											"id": "trim_tolerance",
+											"title": "Tolerance",
+											"type": "text",
+											"variant": "number",
+											"value": 10,
+											"caption": "Allowed color difference from `0` to `255`."
+										}
+									]
+								}
+							]
+						}
+					},
+					{
+						"id": "group_quantize",
+						"title": "Quantize",
+						"type": "group"
+					},
+					{
+						"id": "quantize_enabled",
+						"title": "Apply Quantization",
+						"type": "checkbox",
+						"value": false,
+						"caption": "Reduce the image to an indexed color palette before writing the output PNG or GIF."
+					},
+					{
+						"id": "quantize_mode",
+						"title": "Quantize Mode",
+						"type": "select",
+						"value": "High Quality [quantize], Fast [quantizeFast]",
+						"caption": "Choose quality or speed for palette reduction."
+					},
+					{
+						"id": "quantize_colors",
+						"title": "Maximum Colors",
+						"type": "text",
+						"variant": "number",
+						"value": 256,
+						"caption": "Maximum palette size."
+					},
+					{
+						"id": "quantize_dither",
+						"title": "Dither",
+						"type": "checkbox",
+						"value": true,
+						"caption": "Use dithering to reduce banding."
+					},
+					{
+						"id": "quantize_dither_type",
+						"title": "Dither Type",
+						"type": "select",
+						"value": "Floyd-Steinberg [FloydSteinberg], Stucki [Stucki], Atkinson [Atkinson], Jarvis [Jarvis], Burkes [Burkes], Sierra [Sierra]",
+						"caption": "Dither algorithm for high quality quantize mode."
+					},
+					{
+						"id": "quantize_crush_rgb",
+						"title": "Fast RGB Crush",
+						"type": "text",
+						"variant": "number",
+						"value": 16,
+						"caption": "RGB posterization level used by fast quantize mode."
+					},
+					{
+						"id": "quantize_crush_alpha",
+						"title": "Fast Alpha Crush",
+						"type": "text",
+						"variant": "number",
+						"value": 16,
+						"caption": "Alpha posterization level used by fast quantize mode."
+					},
+					{
+						"id": "group_output",
+						"title": "Output",
+						"type": "group"
+					},
+					{
+						"id": "output_format",
+						"title": "Image Format",
+						"type": "select",
+						"value": "PNG [png], JPEG [jpeg], WebP [webp], GIF [gif]",
+						"caption": "Format for generated output images."
+					},
+					{
+						"id": "output_quality",
+						"title": "Quality",
+						"type": "text",
+						"variant": "number",
+						"value": 90,
+						"caption": "JPEG and WebP quality from `0` to `100`."
+					},
+					{
+						"id": "output_append",
+						"title": "Filename Append",
+						"type": "text",
+						"value": "-output",
+						"caption": "Optional text to append to each output filename, just before the extension."
+					}
+				]
+			}
+		}
+	]
+}
