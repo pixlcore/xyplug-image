@@ -114,7 +114,7 @@ const app = {
 		let func = 'filter_' + filter.name;
 		let params = Object.assign( {}, filter.params );
 		
-		this.log(`Applying filter: ${filter.name}: ` + JSON.stringify(params));
+		this.log(`Applying filter: ${filter.name}: ` + JSON.stringify(filter.params));
 		
 		if (this[func]) {
 			await this[func]( params );
@@ -122,6 +122,29 @@ const app = {
 		else {
 			this.canvas[filter.name]( params );
 		}
+	},
+	
+	async filter_convolve(filter) {
+		// Convert CSV kernel input into the numeric matrix array canvas-plus expects.
+		if (typeof(filter.matrix) == 'string') {
+			filter.matrix = filter.matrix.split(/\,\s*/).map( parseFloat );
+		}
+		
+		this.canvas.convolve( filter );
+	},
+	
+	async filter_curves(filter) {
+		// Convert CSV curve input into the numeric array canvas-plus expects.
+		if (typeof(filter.points) == 'string') {
+			filter.points = filter.points.split(/\,\s*/).map( function(value) {
+				return parseInt(value);
+			} );
+		}
+		
+		var opts = {};
+		opts[ filter.channels ] = filter.points;
+		
+		this.canvas.curves( opts );
 	},
 	
 	async filter_transform(filter) {
@@ -192,8 +215,8 @@ const app = {
 		// intercept composite to fetch url or load from disk
 		
 		// work around quirk in canvas-plus
-        if (!('width' in filter)) filter.width = 0;
-        if (!('height' in filter)) filter.height = 0;
+		if (!('width' in filter)) filter.width = 0;
+		if (!('height' in filter)) filter.height = 0;
 		
 		let overlay = new CanvasPlus();
 		overlay.set( this.params.config );

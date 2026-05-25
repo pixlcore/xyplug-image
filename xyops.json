@@ -143,7 +143,7 @@
 						"caption": "Alignment used by FitPad and FitOver modes."
 					},
 					{
-						"id": "resize_offset_x",
+						"id": "resize_offsetX",
 						"title": "Offset X",
 						"type": "text",
 						"variant": "number",
@@ -152,7 +152,7 @@
 						"range": "-32767 - 32767 / 1"
 					},
 					{
-						"id": "resize_offset_y",
+						"id": "resize_offsetY",
 						"title": "Offset Y",
 						"type": "text",
 						"variant": "number",
@@ -364,7 +364,7 @@
 											"caption": "Overlay alignment."
 										},
 										{
-											"id": "composite_margin_x",
+											"id": "composite_marginX",
 											"title": "Margin X",
 											"type": "text",
 											"variant": "number",
@@ -373,7 +373,7 @@
 											"range": "0 - 32767 / 1"
 										},
 										{
-											"id": "composite_margin_y",
+											"id": "composite_marginY",
 											"title": "Margin Y",
 											"type": "text",
 											"variant": "number",
@@ -382,7 +382,7 @@
 											"range": "0 - 32767 / 1"
 										},
 										{
-											"id": "composite_offset_x",
+											"id": "composite_offsetX",
 											"title": "Offset X",
 											"type": "text",
 											"variant": "number",
@@ -391,7 +391,7 @@
 											"range": "-32767 - 32767 / 1"
 										},
 										{
-											"id": "composite_offset_y",
+											"id": "composite_offsetY",
 											"title": "Offset Y",
 											"type": "text",
 											"variant": "number",
@@ -521,7 +521,7 @@
 											"title": "Channels",
 											"type": "select",
 											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
-											"caption": "Channels to curve."
+											"caption": "Select which channels to curve."
 										}
 									]
 								},
@@ -580,12 +580,12 @@
 									]
 								},
 								{
-									"id": "find_edges",
+									"id": "findEdges",
 									"title": "Find Edges",
 									"description": "Apply an edge detection filter.  [Learn More](https://github.com/jhuckaby/canvas-plus#findedges)",
 									"fields": [
 										{
-											"id": "find_edges_channels",
+											"id": "findEdges_channels",
 											"title": "Channels",
 											"type": "select",
 											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
@@ -609,12 +609,12 @@
 									]
 								},
 								{
-									"id": "gaussian_blur",
+									"id": "gaussianBlur",
 									"title": "Gaussian Blur",
 									"description": "Apply a higher quality Gaussian blur.  [Learn More](https://github.com/jhuckaby/canvas-plus#gaussianblur)",
 									"fields": [
 										{
-											"id": "gaussian_blur_amount",
+											"id": "gaussianBlur_amount",
 											"title": "Amount",
 											"type": "text",
 											"variant": "number",
@@ -623,7 +623,7 @@
 											"range": "3 - 100 / 1"
 										},
 										{
-											"id": "gaussian_blur_sigma",
+											"id": "gaussianBlur_sigma",
 											"title": "Sigma",
 											"type": "text",
 											"variant": "number",
@@ -632,14 +632,14 @@
 											"range": "1 - 100 / 1"
 										},
 										{
-											"id": "gaussian_blur_edges",
+											"id": "gaussianBlur_edges",
 											"title": "Edge Mode",
 											"type": "select",
 											"value": "Repeat [repeat], Wrap [wrap], Mirror [mirror], Discard [discard]",
 											"caption": "How out-of-bounds pixels are handled."
 										},
 										{
-											"id": "gaussian_blur_channels",
+											"id": "gaussianBlur_channels",
 											"title": "Channels",
 											"type": "select",
 											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
@@ -653,7 +653,7 @@
 									"description": "Adjust the image opacity.  [Learn More](https://github.com/jhuckaby/canvas-plus#opacity)",
 									"fields": [
 										{
-											"id": "opacity_amount",
+											"id": "opacity_opacity",
 											"title": "Opacity",
 											"type": "text",
 											"variant": "number",
@@ -723,14 +723,14 @@
 											"caption": "Use dithering to reduce banding."
 										},
 										{
-											"id": "quantize_dither_type",
+											"id": "quantize_ditherType",
 											"title": "Dither Type",
 											"type": "select",
 											"value": "Floyd-Steinberg [FloydSteinberg], Stucki [Stucki], Atkinson [Atkinson], Jarvis [Jarvis], Burkes [Burkes], Sierra [Sierra]",
 											"caption": "Dither algorithm for high quality quantize mode."
 										},
 										{
-											"id": "quantize_crush_rgb",
+											"id": "quantize_crushRGB",
 											"title": "Fast RGB Crush",
 											"type": "text",
 											"variant": "number",
@@ -739,7 +739,7 @@
 											"range": "0 - 128 / 1"
 										},
 										{
-											"id": "quantize_crush_alpha",
+											"id": "quantize_crushAlpha",
 											"title": "Fast Alpha Crush",
 											"type": "text",
 											"variant": "number",

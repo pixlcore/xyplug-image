@@ -194,7 +194,7 @@ cp /path/to/photo.jpg /tmp/xyplug-image-test/photo.jpg
 Run the Plugin wrapper directly:
 
 ```sh
-printf '%s\n' '{"xy":1,"cwd":"/tmp/xyplug-image-test","params":{"config":{"readEXIF":true,"autoOrient":true,"throw":true},"resize_enabled":true,"resize_width":640,"resize_height":480,"resize_mode":"fit","resize_direction":"both","resize_gravity":"center","resize_offset_x":0,"resize_offset_y":0,"resize_antialias":"good","filter_tool":"none","filters":[],"output_format":"png","output_quality":100,"output_append":"-output"},"input":{"files":[{"filename":"/tmp/xyplug-image-test/photo.jpg"}]}}' | node index.js
+printf '%s\n' '{"xy":1,"cwd":"/tmp/xyplug-image-test","params":{"config":{"readEXIF":true,"autoOrient":true,"throw":true},"resize_enabled":true,"resize_width":640,"resize_height":480,"resize_mode":"fit","resize_direction":"both","resize_gravity":"center","resize_offsetX":0,"resize_offsetY":0,"resize_antialias":"good","filter_tool":"none","filters":[],"output_format":"png","output_quality":100,"output_append":"-output"},"input":{"files":[{"filename":"/tmp/xyplug-image-test/photo.jpg"}]}}' | node index.js
 ```
 
 Or build and run the Docker image locally:
