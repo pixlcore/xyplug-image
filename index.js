@@ -2,6 +2,7 @@
 // xyOps Plugin for manipulating images using canvas-plus
 
 const fs = require('fs');
+const Path = require('path');
 const CanvasPlus = require('pixl-canvas-plus');
 
 const app = {
@@ -15,6 +16,9 @@ const app = {
 		this.params = this.job.params;
 		this.input = this.job.input || {};
 		const files = this.input.files || [];
+		
+		// chdir into job temp dir
+		if (this.job.cwd) process.chdir( this.job.cwd );
 		
 		if (!this.params.config) this.params.config = {};
 		
@@ -64,7 +68,7 @@ const app = {
 		
 		for (const [idx, file] of files.entries()) {
 			await this.processFile(file);
-			this.send({ progress: idx / files.length });
+			this.send({ progress: (idx + 1) / files.length });
 		}
 		
 		// done
@@ -99,7 +103,7 @@ const app = {
 		
 		await this.canvas.write( output );
 		this.log(`Wrote: ` + output.file);
-		this.files.push( output.file );
+		this.files.push( Path.resolve(output.file) );
 		
 		// done
 		this.canvas.reset();
