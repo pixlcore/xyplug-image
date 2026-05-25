@@ -56,9 +56,8 @@ const app = {
 			});
 		}
 		
-		// advanced filters from config
-		this.filters = this.filters.concat( this.params.config.filters || [] );
-		delete this.params.config.filters;
+		// advanced filters from dedicated JSON param
+		this.filters = this.filters.concat( this.params.filters || [] );
 		
 		// prep output
 		this.output = this.extractParams('output_');
@@ -114,6 +113,8 @@ const app = {
 		// apply single filter to current canvas
 		let func = 'filter_' + filter.name;
 		let params = Object.assign( {}, filter.params );
+		
+		this.log(`Applying filter: ${filter.name}: ` + JSON.stringify(params));
 		
 		if (this[func]) {
 			await this[func]( params );

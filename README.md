@@ -11,7 +11,7 @@ The Plugin runs in Docker and uses [pixl-canvas-plus](https://www.npmjs.com/pack
 
 - Processes all image files passed into the xyOps job input
 - Optionally resizes images before applying another operation
-- Supports one selected image operation per event run, plus advanced filters via JSON
+- Supports one selected image operation per event run, plus advanced filters via Custom Filters JSON
 - Converts output to PNG, JPEG, WebP, or GIF
 - Attaches generated files to the xyOps job output
 - Runs locally on your xyOps worker inside Docker
@@ -63,7 +63,7 @@ The Plugin applies operations in this order:
 1. Load each input image.
 2. Apply the optional Resize step.
 3. Apply the selected Image Operation tool.
-4. Apply any advanced filters listed in Canvas Options.
+4. Apply any advanced filters listed in Custom Filters.
 5. Write and attach the output file.
 
 The normal UI intentionally exposes a simple pipeline: optional resize, one selected operation, then output settings. For more complex pipelines, see [Advanced Filters](#advanced-filters).
@@ -113,6 +113,12 @@ Choose one operation to apply after optional resizing.
 | Transform | Rotate, flip, or apply a custom transform matrix to each image. | [transform](https://github.com/jhuckaby/canvas-plus#transform) |
 | Trim | Automatically trim matching edge pixels. | [trim](https://github.com/jhuckaby/canvas-plus#trim) |
 
+### Advanced
+
+The Advanced section includes a Custom Filters JSON parameter for optional multi-step pipelines.
+
+Custom Filters should be an array of canvas-plus filter objects. See [Advanced Filters](#advanced-filters) for details and examples.
+
 ### Output
 
 The Output section controls the generated file format and filename suffix.
@@ -128,28 +134,26 @@ The Quality parameter applies to JPEG and WebP output. See canvas-plus [write](h
 
 ## Advanced Filters
 
-The Canvas Options JSON can include a `filters` array for advanced pipelines. Each filter object should have a `name` and `params` object. These are applied after Resize and after the selected Image Operation.
+The Custom Filters JSON parameter accepts an array for advanced pipelines. Each filter object should have a `name` and `params` object. These are applied after Resize and after the selected Image Operation.
 
 Example:
 
 ```json
-{
-	"filters": [
-		{
-			"name": "flatten",
-			"params": {
-				"background": "#ffffff"
-			}
-		},
-		{
-			"name": "sharpen",
-			"params": {
-				"edges": "repeat",
-				"channels": "rgb"
-			}
+[
+	{
+		"name": "flatten",
+		"params": {
+			"background": "#ffffff"
 		}
-	]
-}
+	},
+	{
+		"name": "sharpen",
+		"params": {
+			"edges": "repeat",
+			"channels": "rgb"
+		}
+	}
+]
 ```
 
 This is useful when you want a repeatable multi-step pipeline while keeping the main event form simple for everyday use.
@@ -190,7 +194,7 @@ cp /path/to/photo.jpg /tmp/xyplug-image-test/photo.jpg
 Run the Plugin wrapper directly:
 
 ```sh
-printf '%s\n' '{"xy":1,"cwd":"/tmp/xyplug-image-test","params":{"config":{"readEXIF":true,"autoOrient":true,"throw":true},"resize_enabled":true,"resize_width":640,"resize_height":480,"resize_mode":"fit","resize_direction":"both","resize_gravity":"center","resize_offset_x":0,"resize_offset_y":0,"resize_antialias":"good","filter_tool":"none","output_format":"png","output_quality":100,"output_append":"-output"},"input":{"files":[{"filename":"/tmp/xyplug-image-test/photo.jpg"}]}}' | node index.js
+printf '%s\n' '{"xy":1,"cwd":"/tmp/xyplug-image-test","params":{"config":{"readEXIF":true,"autoOrient":true,"throw":true},"resize_enabled":true,"resize_width":640,"resize_height":480,"resize_mode":"fit","resize_direction":"both","resize_gravity":"center","resize_offset_x":0,"resize_offset_y":0,"resize_antialias":"good","filter_tool":"none","filters":[],"output_format":"png","output_quality":100,"output_append":"-output"},"input":{"files":[{"filename":"/tmp/xyplug-image-test/photo.jpg"}]}}' | node index.js
 ```
 
 Or build and run the Docker image locally:
@@ -198,7 +202,7 @@ Or build and run the Docker image locally:
 ```sh
 docker build -t xyplug-image:test .
 
-printf '%s\n' '{"xy":1,"cwd":"/work","params":{"config":{"readEXIF":true,"autoOrient":true,"throw":true},"filter_tool":"none","output_format":"png","output_quality":100,"output_append":"-output"},"input":{"files":[{"filename":"/work/photo.jpg"}]}}' | \
+printf '%s\n' '{"xy":1,"cwd":"/work","params":{"config":{"readEXIF":true,"autoOrient":true,"throw":true},"filter_tool":"none","filters":[],"output_format":"png","output_quality":100,"output_append":"-output"},"input":{"files":[{"filename":"/work/photo.jpg"}]}}' | \
 docker run -i --rm \
 	-v /tmp/xyplug-image-test:/work \
 	--entrypoint node \

@@ -26,7 +26,7 @@
 							"readEXIF": true,
 							"autoOrient": true,
 							"throw": true,
-							"debug": true,
+							"debug": false,
 							"gravity": "center",
 							"colors": 256,
 							"dither": true,
@@ -69,8 +69,7 @@
 								"near_lossless": 100,
 								"use_delta_palette": 0,
 								"use_sharp_yuv": 0
-							},
-							"filters": []
+							}
 						},
 						"caption": "Set options for the canvas-plus library.  [Learn More](https://github.com/jhuckaby/canvas-plus#parameters)"
 					},
@@ -902,6 +901,19 @@
 								}
 							]
 						}
+					},
+					{
+						"id": "group_advanced",
+						"title": "Advanced",
+						"type": "group",
+						"caption": "Optionally append custom canvas-plus filters after the main image operation."
+					},
+					{
+						"id": "filters",
+						"title": "Custom Filters",
+						"type": "json",
+						"value": [],
+						"caption": "Provide an optional array of custom canvas-plus filters to run after Resize and the selected Image Operation.  [Learn More](https://github.com/pixlcore/xyplug-image#advanced-filters)"
 					},
 					{
 						"id": "group_output",
