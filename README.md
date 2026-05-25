@@ -1,7 +1,7 @@
 <p align="center"><img src="https://raw.githubusercontent.com/pixlcore/xyplug-image/refs/heads/main/logo.png" height="160" alt="Image Converter"/></p>
 <h1 align="center">Image Converter</h1>
 
-An [xyOps](https://xyops.io) Marketplace Event Plugin for converting, resizing, and transforming image files using the [canvas-plus](https://github.com/jhuckaby/canvas-plus) image processing library.
+A [xyOps](https://xyops.io) Marketplace Event Plugin for converting, resizing, and transforming image files using the [canvas-plus](https://github.com/jhuckaby/canvas-plus) image processing library.
 
 This Plugin processes image files from the xyOps job input, applies the selected operations, writes new image files, and attaches those files to the job output. It is designed for workflows where upstream jobs produce images, users upload images manually, or a scheduled event needs to batch-convert files into a standard format.
 
