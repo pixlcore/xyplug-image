@@ -32,6 +32,34 @@ const app = {
 			throw new Error("No input files found.");
 		}
 		
+		// optional filters
+		this.filters = [];
+		
+		// resize
+		if (this.params.resize_enabled) {
+			delete this.params.resize_enabled;
+			this.filters.push({
+				name: 'resize',
+				params: this.extractParams('resize_')
+			});
+		}
+		
+		// custom filter
+		if (this.params.filter_tool && (this.params.filter_tool != 'none')) {
+			this.filters.push({
+				name: this.params.filter_tool,
+				params: this.extractParams( this.params.filter_tool + '_' )
+			});
+		}
+		
+		// advanced filters from config
+		this.filters = this.filters.concat( this.params.config.filters || [] );
+		delete this.params.config.filters;
+		
+		// prep output
+		this.output = this.extractParams('output_');
+		
+		// file loop
 		this.log(`Starting processing on ${files.length} files...`);
 		
 		for (const [idx, file] of files.entries()) {
@@ -39,6 +67,7 @@ const app = {
 			this.send({ progress: idx / files.length });
 		}
 		
+		// done
 		console.log( `🟢 Job complete` );
 		this.send({ code: 0, files: this.files });
 	},
@@ -56,39 +85,19 @@ const app = {
 		// load image
 		await this.canvas.load( file.filename );
 		
-		// optional filters
-		let filters = [];
-		
-		// resize
-		if (params.resize_enabled) {
-			delete params.resize_enabled;
-			filters.push({
-				name: 'resize',
-				params: this.extractParams('resize_')
-			});
-		}
-		
-		// custom filter
-		if (params.filter_tool && (params.filter_tool != 'none')) {
-			filters.push({
-				name: params.filter_tool,
-				params: this.extractParams( params.filter_tool + '_' )
-			});
-		}
-		
 		// apply all filters in sequence
-		for (const [idx, filter] of filters.entries()) {
-			await this.applyFilter(filter);
+		for (const [idx, filter] of this.filters.entries()) {
+			await this.applyFilter( filter );
 		}
 		
 		// write
-		let output = this.extractParams('output_');
-		let append = output.append || '';
+		let output = Object.assign( {}, this.output );
+		let append = output.append; 
 		delete output.append;
 		
 		output.file = file.filename.replace(/\.\w+$/, '') + append + '.' + output.format.replace(/jpeg/, 'jpg');
 		
-		await this.canvas.write(output);
+		await this.canvas.write( output );
 		this.log(`Wrote: ` + output.file);
 		this.files.push( output.file );
 		
@@ -100,11 +109,13 @@ const app = {
 	async applyFilter(filter) {
 		// apply single filter to current canvas
 		let func = 'filter_' + filter.name;
+		let params = Object.assign( {}, filter.params );
+		
 		if (this[func]) {
-			await this[func](filter.params);
+			await this[func]( params );
 		}
 		else {
-			this.canvas[filter.name](filter.params);
+			this.canvas[filter.name]( params );
 		}
 	},
 	

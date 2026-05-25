@@ -8,7 +8,7 @@
 			"type": "plugin",
 			"data": {
 				"id": "pmimgqr7ps2iu16a6",
-				"title": "Image Toolkit",
+				"title": "Image Converter",
 				"enabled": true,
 				"type": "event",
 				"command": "docker run -i --rm --init --name \"xyplug-image-{{id}}\" ghcr.io/pixlcore/xyplug-image:v1.0.0",
@@ -69,7 +69,8 @@
 								"near_lossless": 100,
 								"use_delta_palette": 0,
 								"use_sharp_yuv": 0
-							}
+							},
+							"filters": []
 						},
 						"caption": "Set options for the canvas-plus library.  [Learn More](https://github.com/jhuckaby/canvas-plus#parameters)"
 					},
