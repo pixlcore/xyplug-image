@@ -171,102 +171,6 @@
 							"default": "none",
 							"tools": [
 								{
-									"id": "none",
-									"title": "None",
-									"description": "Skip the optional filter step.",
-									"fields": []
-								},
-								{
-									"id": "crop",
-									"title": "Crop",
-									"description": "Crop each image down to a specific rectangular area.  [Learn More](https://github.com/jhuckaby/canvas-plus#crop)",
-									"fields": [
-										{
-											"id": "crop_x",
-											"title": "Crop X",
-											"type": "text",
-											"variant": "number",
-											"value": 0,
-											"caption": "Left coordinate of the crop rectangle."
-										},
-										{
-											"id": "crop_y",
-											"title": "Crop Y",
-											"type": "text",
-											"variant": "number",
-											"value": 0,
-											"caption": "Top coordinate of the crop rectangle."
-										},
-										{
-											"id": "crop_width",
-											"title": "Crop Width",
-											"type": "text",
-											"variant": "number",
-											"value": 100,
-											"caption": "Width of the crop rectangle in pixels."
-										},
-										{
-											"id": "crop_height",
-											"title": "Crop Height",
-											"type": "text",
-											"variant": "number",
-											"value": 100,
-											"caption": "Height of the crop rectangle in pixels."
-										}
-									]
-								},
-								{
-									"id": "transform",
-									"title": "Transform",
-									"description": "Rotate, flip, or apply a custom transform matrix to each image.  [Learn More](https://github.com/jhuckaby/canvas-plus#transform)",
-									"fields": [
-										{
-											"id": "transform_mode",
-											"title": "Transformation",
-											"type": "select",
-											"value": "Rotate [rotate], Flip Horizontal [fliph], Flip Vertical [flipv], 3x3 Matrix [matrix]",
-											"caption": "Choose one transform operation."
-										},
-										{
-											"id": "transform_rotate",
-											"title": "Rotation Angle",
-											"type": "text",
-											"variant": "number",
-											"value": 0,
-											"caption": "Degrees to rotate when the transform mode is Rotate."
-										},
-										{
-											"id": "transform_matrix",
-											"title": "3x3 Matrix",
-											"type": "text",
-											"value": "",
-											"caption": "Optionally set the first 6 elements of the 3x3 transform matrix, comma-separated."
-										},
-										{
-											"id": "transform_fixed",
-											"title": "Fixed Size",
-											"type": "checkbox",
-											"value": false,
-											"caption": "Keep the original canvas dimensions when rotating instead of expanding to fit."
-										},
-										{
-											"id": "transform_background",
-											"title": "Background Color",
-											"type": "text",
-											"variant": "color",
-											"value": "",
-											"caption": "Background color exposed by rotation.  Leave blank for transparent."
-										},
-										{
-											"id": "transform_antialias",
-											"title": "Anti-Aliasing",
-											"type": "select",
-											"value": "Best [best], Good [good], Fast [fast], Nearest [nearest]",
-											"caption": "Scaling quality for transform operations."
-										}
-									]
-								},
-								{
 									"id": "adjust",
 									"title": "Adjustments",
 									"description": "Adjust brightness, contrast, color, lighting, gamma, and normalization.  [Learn More](https://github.com/jhuckaby/canvas-plus#adjust)",
@@ -344,58 +248,6 @@
 									]
 								},
 								{
-									"id": "quantize",
-									"title": "Quantize",
-									"description": "Reduce the image to an indexed color palette before writing PNG or GIF output.  [Learn More](https://github.com/jhuckaby/canvas-plus#quantize)",
-									"fields": [
-										{
-											"id": "quantize_mode",
-											"title": "Quantize Mode",
-											"type": "select",
-											"value": "High Quality [quantize], Fast [quantizeFast]",
-											"caption": "Choose quality or speed for palette reduction."
-										},
-										{
-											"id": "quantize_colors",
-											"title": "Maximum Colors",
-											"type": "text",
-											"variant": "number",
-											"value": 256,
-											"caption": "Maximum palette size."
-										},
-										{
-											"id": "quantize_dither",
-											"title": "Dither",
-											"type": "checkbox",
-											"value": true,
-											"caption": "Use dithering to reduce banding."
-										},
-										{
-											"id": "quantize_dither_type",
-											"title": "Dither Type",
-											"type": "select",
-											"value": "Floyd-Steinberg [FloydSteinberg], Stucki [Stucki], Atkinson [Atkinson], Jarvis [Jarvis], Burkes [Burkes], Sierra [Sierra]",
-											"caption": "Dither algorithm for high quality quantize mode."
-										},
-										{
-											"id": "quantize_crush_rgb",
-											"title": "Fast RGB Crush",
-											"type": "text",
-											"variant": "number",
-											"value": 16,
-											"caption": "RGB posterization level used by fast quantize mode."
-										},
-										{
-											"id": "quantize_crush_alpha",
-											"title": "Fast Alpha Crush",
-											"type": "text",
-											"variant": "number",
-											"value": 16,
-											"caption": "Alpha posterization level used by fast quantize mode."
-										}
-									]
-								},
-								{
 									"id": "blur",
 									"title": "Blur",
 									"description": "Apply a fast box blur.  [Learn More](https://github.com/jhuckaby/canvas-plus#blur)",
@@ -417,43 +269,6 @@
 										},
 										{
 											"id": "blur_channels",
-											"title": "Channels",
-											"type": "select",
-											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
-											"caption": "Channels to blur."
-										}
-									]
-								},
-								{
-									"id": "gaussian_blur",
-									"title": "Gaussian Blur",
-									"description": "Apply a higher quality Gaussian blur.  [Learn More](https://github.com/jhuckaby/canvas-plus#gaussianblur)",
-									"fields": [
-										{
-											"id": "gaussian_blur_amount",
-											"title": "Amount",
-											"type": "text",
-											"variant": "number",
-											"value": 5,
-											"caption": "Blur radius amount."
-										},
-										{
-											"id": "gaussian_blur_sigma",
-											"title": "Sigma",
-											"type": "text",
-											"variant": "number",
-											"value": 2,
-											"caption": "Gaussian sigma amount."
-										},
-										{
-											"id": "gaussian_blur_edges",
-											"title": "Edge Mode",
-											"type": "select",
-											"value": "Repeat [repeat], Wrap [wrap], Mirror [mirror], Discard [discard]",
-											"caption": "How out-of-bounds pixels are handled."
-										},
-										{
-											"id": "gaussian_blur_channels",
 											"title": "Channels",
 											"type": "select",
 											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
@@ -619,6 +434,45 @@
 									]
 								},
 								{
+									"id": "crop",
+									"title": "Crop",
+									"description": "Crop each image down to a specific rectangular area.  [Learn More](https://github.com/jhuckaby/canvas-plus#crop)",
+									"fields": [
+										{
+											"id": "crop_x",
+											"title": "Crop X",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Left coordinate of the crop rectangle."
+										},
+										{
+											"id": "crop_y",
+											"title": "Crop Y",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Top coordinate of the crop rectangle."
+										},
+										{
+											"id": "crop_width",
+											"title": "Crop Width",
+											"type": "text",
+											"variant": "number",
+											"value": 100,
+											"caption": "Width of the crop rectangle in pixels."
+										},
+										{
+											"id": "crop_height",
+											"title": "Crop Height",
+											"type": "text",
+											"variant": "number",
+											"value": 100,
+											"caption": "Height of the crop rectangle in pixels."
+										}
+									]
+								},
+								{
 									"id": "curves",
 									"title": "Curves",
 									"description": "Apply a custom tonality curve.  [Learn More](https://github.com/jhuckaby/canvas-plus#curves)",
@@ -721,6 +575,49 @@
 									]
 								},
 								{
+									"id": "gaussian_blur",
+									"title": "Gaussian Blur",
+									"description": "Apply a higher quality Gaussian blur.  [Learn More](https://github.com/jhuckaby/canvas-plus#gaussianblur)",
+									"fields": [
+										{
+											"id": "gaussian_blur_amount",
+											"title": "Amount",
+											"type": "text",
+											"variant": "number",
+											"value": 5,
+											"caption": "Blur radius amount."
+										},
+										{
+											"id": "gaussian_blur_sigma",
+											"title": "Sigma",
+											"type": "text",
+											"variant": "number",
+											"value": 2,
+											"caption": "Gaussian sigma amount."
+										},
+										{
+											"id": "gaussian_blur_edges",
+											"title": "Edge Mode",
+											"type": "select",
+											"value": "Repeat [repeat], Wrap [wrap], Mirror [mirror], Discard [discard]",
+											"caption": "How out-of-bounds pixels are handled."
+										},
+										{
+											"id": "gaussian_blur_channels",
+											"title": "Channels",
+											"type": "select",
+											"value": "RGBA [rgba], RGB [rgb], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels to blur."
+										}
+									]
+								},
+								{
+									"id": "none",
+									"title": "None",
+									"description": "Skip the optional filter step.",
+									"fields": []
+								},
+								{
 									"id": "opacity",
 									"title": "Opacity",
 									"description": "Adjust the image opacity.  [Learn More](https://github.com/jhuckaby/canvas-plus#opacity)",
@@ -762,6 +659,58 @@
 											"type": "select",
 											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
 											"caption": "Channels to posterize."
+										}
+									]
+								},
+								{
+									"id": "quantize",
+									"title": "Quantize",
+									"description": "Reduce the image to an indexed color palette before writing PNG or GIF output.  [Learn More](https://github.com/jhuckaby/canvas-plus#quantize)",
+									"fields": [
+										{
+											"id": "quantize_mode",
+											"title": "Quantize Mode",
+											"type": "select",
+											"value": "High Quality [quantize], Fast [quantizeFast]",
+											"caption": "Choose quality or speed for palette reduction."
+										},
+										{
+											"id": "quantize_colors",
+											"title": "Maximum Colors",
+											"type": "text",
+											"variant": "number",
+											"value": 256,
+											"caption": "Maximum palette size."
+										},
+										{
+											"id": "quantize_dither",
+											"title": "Dither",
+											"type": "checkbox",
+											"value": true,
+											"caption": "Use dithering to reduce banding."
+										},
+										{
+											"id": "quantize_dither_type",
+											"title": "Dither Type",
+											"type": "select",
+											"value": "Floyd-Steinberg [FloydSteinberg], Stucki [Stucki], Atkinson [Atkinson], Jarvis [Jarvis], Burkes [Burkes], Sierra [Sierra]",
+											"caption": "Dither algorithm for high quality quantize mode."
+										},
+										{
+											"id": "quantize_crush_rgb",
+											"title": "Fast RGB Crush",
+											"type": "text",
+											"variant": "number",
+											"value": 16,
+											"caption": "RGB posterization level used by fast quantize mode."
+										},
+										{
+											"id": "quantize_crush_alpha",
+											"title": "Fast Alpha Crush",
+											"type": "text",
+											"variant": "number",
+											"value": 16,
+											"caption": "Alpha posterization level used by fast quantize mode."
 										}
 									]
 								},
@@ -834,6 +783,57 @@
 											"type": "select",
 											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
 											"caption": "Channels to threshold."
+										}
+									]
+								},
+								{
+									"id": "transform",
+									"title": "Transform",
+									"description": "Rotate, flip, or apply a custom transform matrix to each image.  [Learn More](https://github.com/jhuckaby/canvas-plus#transform)",
+									"fields": [
+										{
+											"id": "transform_mode",
+											"title": "Transformation",
+											"type": "select",
+											"value": "Rotate [rotate], Flip Horizontal [fliph], Flip Vertical [flipv], 3x3 Matrix [matrix]",
+											"caption": "Choose one transform operation."
+										},
+										{
+											"id": "transform_rotate",
+											"title": "Rotation Angle",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Degrees to rotate when the transform mode is Rotate."
+										},
+										{
+											"id": "transform_matrix",
+											"title": "3x3 Matrix",
+											"type": "text",
+											"value": "",
+											"caption": "Optionally set the first 6 elements of the 3x3 transform matrix, comma-separated."
+										},
+										{
+											"id": "transform_fixed",
+											"title": "Fixed Size",
+											"type": "checkbox",
+											"value": false,
+											"caption": "Keep the original canvas dimensions when rotating instead of expanding to fit."
+										},
+										{
+											"id": "transform_background",
+											"title": "Background Color",
+											"type": "text",
+											"variant": "color",
+											"value": "",
+											"caption": "Background color exposed by rotation.  Leave blank for transparent."
+										},
+										{
+											"id": "transform_antialias",
+											"title": "Anti-Aliasing",
+											"type": "select",
+											"value": "Best [best], Good [good], Fast [fast], Nearest [nearest]",
+											"caption": "Scaling quality for transform operations."
 										}
 									]
 								},
