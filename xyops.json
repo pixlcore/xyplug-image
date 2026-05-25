@@ -171,6 +171,12 @@
 							"default": "none",
 							"tools": [
 								{
+									"id": "none",
+									"title": "(None)",
+									"description": "Skip the optional filter step.",
+									"fields": []
+								},
+								{
 									"id": "adjust",
 									"title": "Adjustments",
 									"description": "Adjust brightness, contrast, color, lighting, gamma, and normalization.  [Learn More](https://github.com/jhuckaby/canvas-plus#adjust)",
@@ -610,12 +616,6 @@
 											"caption": "Channels to blur."
 										}
 									]
-								},
-								{
-									"id": "none",
-									"title": "None",
-									"description": "Skip the optional filter step.",
-									"fields": []
 								},
 								{
 									"id": "opacity",
