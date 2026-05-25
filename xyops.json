@@ -93,7 +93,8 @@
 						"type": "text",
 						"variant": "number",
 						"value": 640,
-						"caption": "Desired output width in pixels. Leave blank to preserve aspect ratio from height."
+						"caption": "Desired output width in pixels. Leave blank to preserve aspect ratio from height.",
+						"range": "8 - 32767 / 1"
 					},
 					{
 						"id": "resize_height",
@@ -101,7 +102,8 @@
 						"type": "text",
 						"variant": "number",
 						"value": 480,
-						"caption": "Desired output height in pixels. Leave blank to preserve aspect ratio from width."
+						"caption": "Desired output height in pixels. Leave blank to preserve aspect ratio from width.",
+						"range": "8 - 32767 / 1"
 					},
 					{
 						"id": "resize_scale",
@@ -109,7 +111,8 @@
 						"type": "text",
 						"variant": "number",
 						"value": null,
-						"caption": "Optional scale multiplier such as `0.5` or `2`. When set, it takes precedence over width and height."
+						"caption": "Optional scale multiplier such as `0.5` or `2`. When set, it takes precedence over width and height.",
+						"range": "0.01 - 100 / any"
 					},
 					{
 						"id": "resize_mode",
@@ -146,7 +149,8 @@
 						"type": "text",
 						"variant": "number",
 						"value": 0,
-						"caption": "Horizontal alignment offset in pixels."
+						"caption": "Horizontal alignment offset in pixels.",
+						"range": "-32767 - 32767 / 1"
 					},
 					{
 						"id": "resize_offset_y",
@@ -154,7 +158,8 @@
 						"type": "text",
 						"variant": "number",
 						"value": 0,
-						"caption": "Vertical alignment offset in pixels."
+						"caption": "Vertical alignment offset in pixels.",
+						"range": "-32767 - 32767 / 1"
 					},
 					{
 						"id": "resize_antialias",
@@ -188,7 +193,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Brightness adjustment from `-255` to `255`."
+											"caption": "Brightness adjustment from `-255` to `255`.",
+											"range": "-255 - 255 / 1"
 										},
 										{
 											"id": "adjust_contrast",
@@ -196,7 +202,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Contrast adjustment from `-255` to `255`."
+											"caption": "Contrast adjustment from `-255` to `255`.",
+											"range": "-255 - 255 / 1"
 										},
 										{
 											"id": "adjust_hue",
@@ -204,7 +211,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Hue rotation from `-360` to `360` degrees."
+											"caption": "Hue rotation from `-360` to `360` degrees.",
+											"range": "-360 - 360 / 1"
 										},
 										{
 											"id": "adjust_saturation",
@@ -212,7 +220,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Saturation adjustment from `-255` to `255`."
+											"caption": "Saturation adjustment from `-255` to `255`.",
+											"range": "-255 - 255 / 1"
 										},
 										{
 											"id": "adjust_shadows",
@@ -220,7 +229,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Lighting shadow adjustment from `-100` to `100`."
+											"caption": "Lighting shadow adjustment from `-100` to `100`.",
+											"range": "-100 - 100 / 1"
 										},
 										{
 											"id": "adjust_highlights",
@@ -228,7 +238,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Lighting highlight adjustment from `-100` to `100`."
+											"caption": "Lighting highlight adjustment from `-100` to `100`.",
+											"range": "-100 - 100 / 1"
 										},
 										{
 											"id": "adjust_gamma",
@@ -236,7 +247,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 1,
-											"caption": "Gamma amount, typically between `0.25` and `4`."
+											"caption": "Gamma amount, typically between `0.25` and `4`.",
+											"range": "0.001 - 100 / any"
 										},
 										{
 											"id": "adjust_normalize",
@@ -265,7 +277,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 2,
-											"caption": "Blur amount. Higher values are stronger and slower."
+											"caption": "Blur amount. Higher values are stronger and slower.",
+											"range": "2 - 100 / 1"
 										},
 										{
 											"id": "blur_edges",
@@ -294,7 +307,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 1,
-											"caption": "Border size in pixels."
+											"caption": "Border size in pixels.",
+											"range": "1 - 1023 / 1"
 										},
 										{
 											"id": "border_color",
@@ -331,7 +345,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Optional overlay resize width. Use `0` to preserve original width."
+											"caption": "Optional overlay resize width. Use `0` to preserve original width.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "composite_height",
@@ -339,7 +354,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Optional overlay resize height. Use `0` to preserve original height."
+											"caption": "Optional overlay resize height. Use `0` to preserve original height.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "composite_gravity",
@@ -354,7 +370,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Horizontal margin in pixels."
+											"caption": "Horizontal margin in pixels.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "composite_margin_y",
@@ -362,7 +379,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Vertical margin in pixels."
+											"caption": "Vertical margin in pixels.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "composite_offset_x",
@@ -370,7 +388,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Horizontal offset in pixels."
+											"caption": "Horizontal offset in pixels.",
+											"range": "-32767 - 32767 / 1"
 										},
 										{
 											"id": "composite_offset_y",
@@ -378,7 +397,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Vertical offset in pixels."
+											"caption": "Vertical offset in pixels.",
+											"range": "-32767 - 32767 / 1"
 										},
 										{
 											"id": "composite_opacity",
@@ -386,7 +406,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 1,
-											"caption": "Overlay opacity from `0` to `1`."
+											"caption": "Overlay opacity from `0` to `1`.",
+											"range": "0 - 1 / any"
 										},
 										{
 											"id": "composite_mode",
@@ -422,7 +443,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Destination channel offset."
+											"caption": "Destination channel offset.",
+											"range": "0 - 255 / 1"
 										},
 										{
 											"id": "convolve_edges",
@@ -451,7 +473,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Left coordinate of the crop rectangle."
+											"caption": "Left coordinate of the crop rectangle.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "crop_y",
@@ -459,7 +482,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Top coordinate of the crop rectangle."
+											"caption": "Top coordinate of the crop rectangle.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "crop_width",
@@ -467,7 +491,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 100,
-											"caption": "Width of the crop rectangle in pixels."
+											"caption": "Width of the crop rectangle in pixels.",
+											"range": "8 - 32767 / 1"
 										},
 										{
 											"id": "crop_height",
@@ -475,7 +500,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 100,
-											"caption": "Height of the crop rectangle in pixels."
+											"caption": "Height of the crop rectangle in pixels.",
+											"range": "8 - 32767 / 1"
 										}
 									]
 								},
@@ -525,7 +551,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Horizontal pixels to add."
+											"caption": "Horizontal pixels to add.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "expand_height",
@@ -533,7 +560,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Vertical pixels to add."
+											"caption": "Vertical pixels to add.",
+											"range": "0 - 32767 / 1"
 										},
 										{
 											"id": "expand_background",
@@ -592,7 +620,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 5,
-											"caption": "Blur radius amount."
+											"caption": "Blur radius amount.",
+											"range": "3 - 100 / 1"
 										},
 										{
 											"id": "gaussian_blur_sigma",
@@ -600,7 +629,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 2,
-											"caption": "Gaussian sigma amount."
+											"caption": "Gaussian sigma amount.",
+											"range": "1 - 100 / 1"
 										},
 										{
 											"id": "gaussian_blur_edges",
@@ -629,7 +659,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 1,
-											"caption": "Final image opacity from `0` to `1`."
+											"caption": "Final image opacity from `0` to `1`.",
+											"range": "0 - 1 / any"
 										},
 										{
 											"id": "opacity_background",
@@ -652,7 +683,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 4,
-											"caption": "Number of posterize levels."
+											"caption": "Number of posterize levels.",
+											"range": "1 - 128 / 1"
 										},
 										{
 											"id": "posterize_channels",
@@ -681,7 +713,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 256,
-											"caption": "Maximum palette size."
+											"caption": "Maximum palette size.",
+											"range": "2 - 256 / 1"
 										},
 										{
 											"id": "quantize_dither",
@@ -703,7 +736,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 16,
-											"caption": "RGB posterization level used by fast quantize mode."
+											"caption": "RGB posterization level used by fast quantize mode.",
+											"range": "0 - 128 / 1"
 										},
 										{
 											"id": "quantize_crush_alpha",
@@ -711,7 +745,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 16,
-											"caption": "Alpha posterization level used by fast quantize mode."
+											"caption": "Alpha posterization level used by fast quantize mode.",
+											"range": "0 - 128 / 1"
 										}
 									]
 								},
@@ -761,7 +796,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Temperature adjustment from `-255` to `255`."
+											"caption": "Temperature adjustment from `-255` to `255`.",
+											"range": "-255 - 255 / 1"
 										}
 									]
 								},
@@ -776,7 +812,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 128,
-											"caption": "Threshold level from `0` to `255`."
+											"caption": "Threshold level from `0` to `255`.",
+											"range": "0 - 255 / 1"
 										},
 										{
 											"id": "threshold_channels",
@@ -805,7 +842,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 0,
-											"caption": "Degrees to rotate when the transform mode is Rotate."
+											"caption": "Degrees to rotate when the transform mode is Rotate.",
+											"range": "0 - 360 / any"
 										},
 										{
 											"id": "transform_matrix",
@@ -857,7 +895,8 @@
 											"type": "text",
 											"variant": "number",
 											"value": 10,
-											"caption": "Allowed color difference from `0` to `255`."
+											"caption": "Allowed color difference from `0` to `255`.",
+											"range": "0 - 255 / 1"
 										}
 									]
 								}
@@ -883,7 +922,8 @@
 						"type": "text",
 						"variant": "number",
 						"value": 100,
-						"caption": "JPEG and WebP quality from `0` to `100`."
+						"caption": "JPEG and WebP quality from `0` to `100`.",
+						"range": "0 - 100 / 1"
 					},
 					{
 						"id": "output_append",
