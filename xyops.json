@@ -163,195 +163,10 @@
 						"caption": "Scaling quality for resize operations."
 					},
 					{
-						"id": "group_crop",
-						"title": "Crop",
-						"type": "group",
-						"caption": "Optionally crop each input image down to a specific rectangular area.  [Learn More](https://github.com/jhuckaby/canvas-plus#crop)"
-					},
-					{
-						"id": "crop_enabled",
-						"title": "Crop Image",
-						"type": "checkbox",
-						"value": false,
-						"caption": "Enable the crop filter."
-					},
-					{
-						"id": "crop_x",
-						"title": "Crop X",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Left coordinate of the crop rectangle."
-					},
-					{
-						"id": "crop_y",
-						"title": "Crop Y",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Top coordinate of the crop rectangle."
-					},
-					{
-						"id": "crop_width",
-						"title": "Crop Width",
-						"type": "text",
-						"variant": "number",
-						"value": 100,
-						"caption": "Width of the crop rectangle in pixels."
-					},
-					{
-						"id": "crop_height",
-						"title": "Crop Height",
-						"type": "text",
-						"variant": "number",
-						"value": 100,
-						"caption": "Height of the crop rectangle in pixels."
-					},
-					{
-						"id": "group_transform",
-						"title": "Transform",
-						"type": "group",
-						"caption": "Optionally rotate, flip, or apply a custom transform matrix to each input image.  [Learn More](https://github.com/jhuckaby/canvas-plus#transform)"
-					},
-					{
-						"id": "transform_enabled",
-						"title": "Transform Image",
-						"type": "checkbox",
-						"value": false,
-						"caption": "Enable the transform filter."
-					},
-					{
-						"id": "transform_mode",
-						"title": "Transformation",
-						"type": "select",
-						"value": "Rotate [rotate], Flip Horizontal [fliph], Flip Vertical [flipv], 3x3 Matrix [matrix]",
-						"caption": "Choose one transform operation."
-					},
-					{
-						"id": "transform_rotate",
-						"title": "Rotation Angle",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Degrees to rotate when the transform mode is Rotate."
-					},
-					{
-						"id": "transform_matrix",
-						"title": "3x3 Matrix",
-						"type": "text",
-						"value": "",
-						"caption": "Optionally set the first 6 elements of the 3x3 transform matrix, comma-separated."
-					},
-					{
-						"id": "transform_fixed",
-						"title": "Fixed Size",
-						"type": "checkbox",
-						"value": false,
-						"caption": "Keep the original canvas dimensions when rotating instead of expanding to fit."
-					},
-					{
-						"id": "transform_background",
-						"title": "Background Color",
-						"type": "text",
-						"variant": "color",
-						"value": "",
-						"caption": "Background color exposed by rotation.  Leave blank for transparent."
-					},
-					{
-						"id": "transform_antialias",
-						"title": "Anti-Aliasing",
-						"type": "select",
-						"value": "Best [best], Good [good], Fast [fast], Nearest [nearest]",
-						"caption": "Scaling quality for transform operations."
-					},
-					{
-						"id": "group_adjustments",
-						"title": "Adjustments",
-						"type": "group",
-						"caption": "Optionally adjust image brightness, contrast, hue, saturation, lighting, gamma, and normalization.  [Learn More](https://github.com/jhuckaby/canvas-plus#adjust)"
-					},
-					{
-						"id": "adjust_enabled",
-						"title": "Apply Adjustments",
-						"type": "checkbox",
-						"value": false,
-						"caption": "Enable the adjustment filters."
-					},
-					{
-						"id": "adjust_brightness",
-						"title": "Brightness",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Brightness adjustment from `-255` to `255`."
-					},
-					{
-						"id": "adjust_contrast",
-						"title": "Contrast",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Contrast adjustment from `-255` to `255`."
-					},
-					{
-						"id": "adjust_hue",
-						"title": "Hue",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Hue rotation from `-360` to `360` degrees."
-					},
-					{
-						"id": "adjust_saturation",
-						"title": "Saturation",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Saturation adjustment from `-255` to `255`."
-					},
-					{
-						"id": "adjust_shadows",
-						"title": "Shadow Detail",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Lighting shadow adjustment from `-100` to `100`."
-					},
-					{
-						"id": "adjust_highlights",
-						"title": "Highlight Detail",
-						"type": "text",
-						"variant": "number",
-						"value": 0,
-						"caption": "Lighting highlight adjustment from `-100` to `100`."
-					},
-					{
-						"id": "adjust_gamma",
-						"title": "Gamma",
-						"type": "text",
-						"variant": "number",
-						"value": 1,
-						"caption": "Gamma amount, typically between `0.25` and `4`."
-					},
-					{
-						"id": "adjust_normalize",
-						"title": "Normalize",
-						"type": "checkbox",
-						"value": false,
-						"caption": "Auto-enhance the image by stretching channel values."
-					},
-					{
-						"id": "adjust_channels",
-						"title": "Adjustment Channels",
-						"type": "select",
-						"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
-						"caption": "Channels used by lighting, gamma and normalize."
-					},
-					{
 						"id": "filter_tool",
-						"title": "Optional Filter",
+						"title": "Image Operation",
 						"type": "toolset",
-						"caption": "Choose one additional canvas-plus filter to apply.",
+						"caption": "Choose one canvas-plus operation to apply after optional resizing.",
 						"data": {
 							"default": "none",
 							"tools": [
@@ -360,6 +175,225 @@
 									"title": "None",
 									"description": "Skip the optional filter step.",
 									"fields": []
+								},
+								{
+									"id": "crop",
+									"title": "Crop",
+									"description": "Crop each image down to a specific rectangular area.  [Learn More](https://github.com/jhuckaby/canvas-plus#crop)",
+									"fields": [
+										{
+											"id": "crop_x",
+											"title": "Crop X",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Left coordinate of the crop rectangle."
+										},
+										{
+											"id": "crop_y",
+											"title": "Crop Y",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Top coordinate of the crop rectangle."
+										},
+										{
+											"id": "crop_width",
+											"title": "Crop Width",
+											"type": "text",
+											"variant": "number",
+											"value": 100,
+											"caption": "Width of the crop rectangle in pixels."
+										},
+										{
+											"id": "crop_height",
+											"title": "Crop Height",
+											"type": "text",
+											"variant": "number",
+											"value": 100,
+											"caption": "Height of the crop rectangle in pixels."
+										}
+									]
+								},
+								{
+									"id": "transform",
+									"title": "Transform",
+									"description": "Rotate, flip, or apply a custom transform matrix to each image.  [Learn More](https://github.com/jhuckaby/canvas-plus#transform)",
+									"fields": [
+										{
+											"id": "transform_mode",
+											"title": "Transformation",
+											"type": "select",
+											"value": "Rotate [rotate], Flip Horizontal [fliph], Flip Vertical [flipv], 3x3 Matrix [matrix]",
+											"caption": "Choose one transform operation."
+										},
+										{
+											"id": "transform_rotate",
+											"title": "Rotation Angle",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Degrees to rotate when the transform mode is Rotate."
+										},
+										{
+											"id": "transform_matrix",
+											"title": "3x3 Matrix",
+											"type": "text",
+											"value": "",
+											"caption": "Optionally set the first 6 elements of the 3x3 transform matrix, comma-separated."
+										},
+										{
+											"id": "transform_fixed",
+											"title": "Fixed Size",
+											"type": "checkbox",
+											"value": false,
+											"caption": "Keep the original canvas dimensions when rotating instead of expanding to fit."
+										},
+										{
+											"id": "transform_background",
+											"title": "Background Color",
+											"type": "text",
+											"variant": "color",
+											"value": "",
+											"caption": "Background color exposed by rotation.  Leave blank for transparent."
+										},
+										{
+											"id": "transform_antialias",
+											"title": "Anti-Aliasing",
+											"type": "select",
+											"value": "Best [best], Good [good], Fast [fast], Nearest [nearest]",
+											"caption": "Scaling quality for transform operations."
+										}
+									]
+								},
+								{
+									"id": "adjust",
+									"title": "Adjustments",
+									"description": "Adjust brightness, contrast, color, lighting, gamma, and normalization.  [Learn More](https://github.com/jhuckaby/canvas-plus#adjust)",
+									"fields": [
+										{
+											"id": "adjust_brightness",
+											"title": "Brightness",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Brightness adjustment from `-255` to `255`."
+										},
+										{
+											"id": "adjust_contrast",
+											"title": "Contrast",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Contrast adjustment from `-255` to `255`."
+										},
+										{
+											"id": "adjust_hue",
+											"title": "Hue",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Hue rotation from `-360` to `360` degrees."
+										},
+										{
+											"id": "adjust_saturation",
+											"title": "Saturation",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Saturation adjustment from `-255` to `255`."
+										},
+										{
+											"id": "adjust_shadows",
+											"title": "Shadow Detail",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Lighting shadow adjustment from `-100` to `100`."
+										},
+										{
+											"id": "adjust_highlights",
+											"title": "Highlight Detail",
+											"type": "text",
+											"variant": "number",
+											"value": 0,
+											"caption": "Lighting highlight adjustment from `-100` to `100`."
+										},
+										{
+											"id": "adjust_gamma",
+											"title": "Gamma",
+											"type": "text",
+											"variant": "number",
+											"value": 1,
+											"caption": "Gamma amount, typically between `0.25` and `4`."
+										},
+										{
+											"id": "adjust_normalize",
+											"title": "Normalize",
+											"type": "checkbox",
+											"value": false,
+											"caption": "Auto-enhance the image by stretching channel values."
+										},
+										{
+											"id": "adjust_channels",
+											"title": "Adjustment Channels",
+											"type": "select",
+											"value": "RGB [rgb], RGBA [rgba], Red [r], Green [g], Blue [b], Alpha [a]",
+											"caption": "Channels used by lighting, gamma and normalize."
+										}
+									]
+								},
+								{
+									"id": "quantize",
+									"title": "Quantize",
+									"description": "Reduce the image to an indexed color palette before writing PNG or GIF output.  [Learn More](https://github.com/jhuckaby/canvas-plus#quantize)",
+									"fields": [
+										{
+											"id": "quantize_mode",
+											"title": "Quantize Mode",
+											"type": "select",
+											"value": "High Quality [quantize], Fast [quantizeFast]",
+											"caption": "Choose quality or speed for palette reduction."
+										},
+										{
+											"id": "quantize_colors",
+											"title": "Maximum Colors",
+											"type": "text",
+											"variant": "number",
+											"value": 256,
+											"caption": "Maximum palette size."
+										},
+										{
+											"id": "quantize_dither",
+											"title": "Dither",
+											"type": "checkbox",
+											"value": true,
+											"caption": "Use dithering to reduce banding."
+										},
+										{
+											"id": "quantize_dither_type",
+											"title": "Dither Type",
+											"type": "select",
+											"value": "Floyd-Steinberg [FloydSteinberg], Stucki [Stucki], Atkinson [Atkinson], Jarvis [Jarvis], Burkes [Burkes], Sierra [Sierra]",
+											"caption": "Dither algorithm for high quality quantize mode."
+										},
+										{
+											"id": "quantize_crush_rgb",
+											"title": "Fast RGB Crush",
+											"type": "text",
+											"variant": "number",
+											"value": 16,
+											"caption": "RGB posterization level used by fast quantize mode."
+										},
+										{
+											"id": "quantize_crush_alpha",
+											"title": "Fast Alpha Crush",
+											"type": "text",
+											"variant": "number",
+											"value": 16,
+											"caption": "Alpha posterization level used by fast quantize mode."
+										}
+									]
 								},
 								{
 									"id": "blur",
@@ -830,64 +864,6 @@
 						}
 					},
 					{
-						"id": "group_quantize",
-						"title": "Quantize",
-						"type": "group",
-						"caption": "Optionally reduce each image to an indexed color palette before writing PNG or GIF output.  [Learn More](https://github.com/jhuckaby/canvas-plus#quantize)"
-					},
-					{
-						"id": "quantize_enabled",
-						"title": "Apply Quantization",
-						"type": "checkbox",
-						"value": false,
-						"caption": "Enable image quantization."
-					},
-					{
-						"id": "quantize_mode",
-						"title": "Quantize Mode",
-						"type": "select",
-						"value": "High Quality [quantize], Fast [quantizeFast]",
-						"caption": "Choose quality or speed for palette reduction."
-					},
-					{
-						"id": "quantize_colors",
-						"title": "Maximum Colors",
-						"type": "text",
-						"variant": "number",
-						"value": 256,
-						"caption": "Maximum palette size."
-					},
-					{
-						"id": "quantize_dither",
-						"title": "Dither",
-						"type": "checkbox",
-						"value": true,
-						"caption": "Use dithering to reduce banding."
-					},
-					{
-						"id": "quantize_dither_type",
-						"title": "Dither Type",
-						"type": "select",
-						"value": "Floyd-Steinberg [FloydSteinberg], Stucki [Stucki], Atkinson [Atkinson], Jarvis [Jarvis], Burkes [Burkes], Sierra [Sierra]",
-						"caption": "Dither algorithm for high quality quantize mode."
-					},
-					{
-						"id": "quantize_crush_rgb",
-						"title": "Fast RGB Crush",
-						"type": "text",
-						"variant": "number",
-						"value": 16,
-						"caption": "RGB posterization level used by fast quantize mode."
-					},
-					{
-						"id": "quantize_crush_alpha",
-						"title": "Fast Alpha Crush",
-						"type": "text",
-						"variant": "number",
-						"value": 16,
-						"caption": "Alpha posterization level used by fast quantize mode."
-					},
-					{
 						"id": "group_output",
 						"title": "Output",
 						"type": "group",
@@ -905,7 +881,7 @@
 						"title": "Quality",
 						"type": "text",
 						"variant": "number",
-						"value": 90,
+						"value": 100,
 						"caption": "JPEG and WebP quality from `0` to `100`."
 					},
 					{

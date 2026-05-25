@@ -68,47 +68,11 @@ const app = {
 			});
 		}
 		
-		// crop
-		if (params.crop_enabled) {
-			delete params.crop_enabled;
-			filters.push({
-				name: 'crop',
-				params: this.extractParams('crop_')
-			});
-		}
-		
-		// transform
-		if (params.transform_enabled) {
-			delete params.transform_enabled;
-			filters.push({
-				name: 'transform',
-				params: this.extractParams('transform_')
-			});
-		}
-		
-		// adjust
-		if (params.adjust_enabled) {
-			delete params.adjust_enabled;
-			filters.push({
-				name: 'adjust',
-				params: this.extractParams('adjust_')
-			});
-		}
-		
 		// custom filter
 		if (params.filter_tool && (params.filter_tool != 'none')) {
 			filters.push({
 				name: params.filter_tool,
 				params: this.extractParams( params.filter_tool + '_' )
-			});
-		}
-		
-		// quantize
-		if (params.quantize_enabled) {
-			delete params.quantize_enabled;
-			filters.push({
-				name: 'quantize',
-				params: this.extractParams('quantize_')
 			});
 		}
 		
