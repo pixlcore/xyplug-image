@@ -216,7 +216,7 @@ The repository includes a workflow at `.github/workflows/docker.yml` that builds
 The published image is:
 
 ```text
-ghcr.io/pixlcore/xyplug-image:v1.0.0
+ghcr.io/pixlcore/xyplug-image:VERSION_TAG
 ```
 
 The workflow builds both `linux/amd64` and `linux/arm64` images.

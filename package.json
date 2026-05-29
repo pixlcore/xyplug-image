@@ -1,6 +1,6 @@
 {
   "name": "xyplug-image",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A xyOps marketplace plugin for manipulating images using canvas-plus.",
   "author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
@@ -24,6 +24,6 @@
     "canvas"
   ],
   "dependencies": {
-	"pixl-canvas-plus": "^3.0.1"
+	"pixl-canvas-plus": "^3.0.3"
   }
 }

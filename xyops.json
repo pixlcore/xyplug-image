@@ -11,7 +11,7 @@
 				"title": "Image Converter",
 				"enabled": true,
 				"type": "event",
-				"command": "docker run -i --rm --init --name \"xyplug-image-{{id}}\" ghcr.io/pixlcore/xyplug-image:v1.0.0",
+				"command": "docker run -i --rm --init --name \"xyplug-image-{{id}}\" ghcr.io/pixlcore/xyplug-image:v1.0.1",
 				"script": "",
 				"kill": "all",
 				"notes": "Convert image formats, resize, crop, and add effects using the canvas-plus library.",
